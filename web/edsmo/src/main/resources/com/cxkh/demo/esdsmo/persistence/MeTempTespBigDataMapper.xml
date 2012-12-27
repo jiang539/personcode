@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cxkh.demo.esdsmo.persistence.MeTempTespBigDataMapper" >
+	
+  <insert id="insertMeTempTespBigData" parameterType="MeTempTespBigData">
+    INSERT INTO me_temp_tesp_big_data (id,name,c1,c2,c3,c4,c5,c6,c7,c8,c9,c0)
+    VALUES (#{id}, #{name}, #{c1, jdbcType=VARCHAR},
+     #{c2, jdbcType=VARCHAR}, #{c3, jdbcType=VARCHAR}, #{c4, jdbcType=VARCHAR}, 
+     #{c5, jdbcType=VARCHAR}, #{c6, jdbcType=VARCHAR}, #{c7, jdbcType=VARCHAR}, 
+     #{c8, jdbcType=VARCHAR}, #{c9, jdbcType=VARCHAR}, #{c0, jdbcType=VARCHAR})
+  </insert>
+  
+  <select id="findAll" resultType="MeTempTespBigData" parameterType="string">
+      select id,name,c1,c2,c3,c4,c5,c6,c7,c8,c9,c0 from me_temp_tesp_big_data   
+  </select>
+      
+
+</mapper>

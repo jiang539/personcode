@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns="http://www.springframework.org/schema/beans"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   http://www.springframework.org/schema/beans/spring-beans-2.5.xsd 
+       http://www.springframework.org/schema/context 
+	   http://www.springframework.org/schema/context/spring-context-2.5.xsd 
+	   http://www.directwebremoting.org/schema/spring-dwr
+       http://www.directwebremoting.org/schema/spring-dwr-3.0.xsd
+       http://www.springframework.org/schema/tx 
+	   http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+	   http://www.springframework.org/schema/aop 
+	   http://www.springframework.org/schema/aop/spring-aop-2.5.xsd" >
+
+    <bean id="configBean" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+        <property name="location" value="classpath:/config.properties"/>
+    </bean>   
+    
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="driverClass" value="${jdbc.driver}"/>
+		<property name="jdbcUrl" value="${jdbc.url}"/>
+		<property name="user" value="${jdbc.username}"/>
+		<property name="password" value="${jdbc.password}"/>
+		<!-- 连接失败后会重试连接数据库 -->
+		<property name="breakAfterAcquireFailure" ><value>false</value></property>
+		<!-- 60秒检测pool内的连接是否正常,Task运行的频率。默认值为0，表示不进行检测。 -->
+		<property name="idleConnectionTestPeriod" ><value>60</value></property>
+		<!-- pool请求取连接失败后重试的次数和重试的频率 1000毫秒,请求连接会发生在pool内连接少于min值或则等待请求数>池内能提供的连接数 -->
+		<property name="acquireRetryAttempts" ><value>10</value></property>
+		<property name="acquireRetryDelay" ><value>1000</value></property>
+		<property name="minPoolSize"><value>10</value></property>
+		<property name="maxPoolSize"><value>50</value>  </property>
+		<!-- 连接空闲300秒会被丢弃 -->
+		<property name="maxIdleTime"><value>300</value> </property>
+		<!-- 初始化时获取的连接数，取值应在minPoolSize与maxPoolSize之间。Default: 3 -->
+		<property name="initialPoolSize"><value>5</value></property>
+	</bean>
+	
+	<!-- 定义mybatis SqlSessionFactory -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="typeAliasesPackage" value="com.cxkh.demo.esdsmo.beans" />
+    </bean>
+
+    <!-- 自动扫描mybatis xml配置文件包路径 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.cxkh.demo.esdsmo.persistence" />
+    </bean>   
+    
+      <!-- 事务管理 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    
+    <!-- 开启注解配置 -->
+    <context:annotation-config />
+    
+    <!-- 扫描注解包范围 -->    
+    <context:component-scan base-package="com.cxkh.demo.esdsmo" />
+
+    <!-- 使用annotation定义事务 -->
+    <tx:annotation-driven transaction-manager="transactionManager" />      
+    
+    
+    <!-- 以静态变量保存ApplicationContext -->
+		<bean class="com.cxkh.demo.esdsmo.common.SpringContextHolder" lazy-init="false" />	
+</beans>

@@ -1,0 +1,175 @@
+/* reset.css */
+html {margin:0;padding:0;border:0;}
+body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav, section {margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+article, aside, details, figcaption, figure, dialog, footer, header, hgroup, menu, nav, section {display:block;}
+body {line-height:1.5;background:white;}
+table {border-collapse:separate;border-spacing:0;}
+caption, th, td {text-align:left;font-weight:normal;float:none !important;}
+table, th, td {vertical-align:middle;}
+blockquote:before, blockquote:after, q:before, q:after {content:'';}
+blockquote, q {quotes:"" "";}
+a img {border:none;}
+:focus {outline:0;}
+
+body {
+	margin: 25px;
+	font: 12px Verdana, Arial, Helvetica;
+	background: #fafafa;
+}
+
+a:link {
+	color: #00F;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #00F;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #c00;
+	text-decoration: underline;
+}
+
+button {
+	width: 75px;
+	height: 21px;
+	background: url(../images/btn.gif) no-repeat 0 0;
+	border: 0px;
+	font-family: Verdana;
+	font-size: 12px;
+	padding: 3px 0px 0px 0px;
+}
+
+input[type=submit] {
+	width: 75px;
+	height: 21px;
+	background: url(../images/btn.gif) no-repeat 0 0;
+	border: 0px;
+	font-family: Verdana;
+	font-size: 12px;
+	padding: 3px 0px 0px 0px;
+}
+
+input[type=submit]:hover {
+	background-color: #FFF576;
+	font-weight: bold;
+}
+
+input[type=button] {
+	width: 75px;
+	height: 21px;
+	background: url(../images/btn.gif) no-repeat 0 0;
+	border: 0px;
+	font-family: Verdana;
+	font-size: 12px;
+	padding: 3px 0px 0px 0px;
+}
+
+input[type=button]:hover {
+	background-color: #FFF576;
+	font-weight: bold;
+}
+
+input[type=reset] {
+	width: 75px;
+	height: 21px;
+	background: url(../images/btn.gif) no-repeat 0 0;
+	border: 0px;
+	font-family: Verdana;
+	font-size: 12px;
+	padding: 3px 0px 0px 0px;
+}
+
+input[type=password] {
+	width: 148px;
+}
+
+input[type=reset]:hover {
+	background-color: #FFF576;
+	font-weight: bold;
+}
+
+select {
+	width: 155px;
+}
+
+table {
+	border-collapse: collapse;
+	border: none;
+}
+
+.actionMessage {
+	font-weight: bold;
+}
+
+.headmenu {
+	background-color: #B5CBE6;
+}
+
+.table_list {
+	width: 95%;
+}
+
+/*注意选择器的层叠关系*/
+.table_list th {
+	background: #B5CBE6;
+	color: #003399;
+	line-height: 20px;
+	height: 30px;
+}
+
+.table_list td {
+	padding: 5px 5px;
+	border-bottom: 1px solid #95bce2;
+	vertical-align: top;
+	text-align: left;
+}
+
+.table_list td * {
+	padding: 5px 5px;
+	text-align: left;
+}
+
+.table_list tr.alt td {
+	background: #ecf6fc; /*这行将给所有偶数行加上背景色*/
+}
+
+.table_list tr.over td {
+	background: #FEF3D1; /*这个将是鼠标高亮行的背景色*/
+}
+
+.table_query {
+	margin: 10px;
+	padding: 8px 8px;
+	width: 75%;
+	font: 14px Verdana, Arial, Helvetica;
+}
+
+.tableTdMenu {
+	font: 14px Verdana, Arial, Helvetica;
+}
+
+.table_list_page {
+	width: 75%;
+}
+
+.table_form {
+	margin: 5px;
+	padding: 5px 5px;
+	width: 75%;
+}
+
+.table_form td {
+	text-align: left;
+	padding: 5px;
+}
+
+.table_form_td_1 {
+	width: 25%;
+}
+
+.table_form_td_2 {
+	width: 30%;
+}

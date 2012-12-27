@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Extjs+Dwr+Spring+Mybatis+oracle测试项目</title>
+<script src="dwr/engine.js"></script> 
+<script src="dwr/util.js"></script>
+<script src="dwr/interface/bb.js"></script>
+<script type="text/javascript">
+    function doMethod()
+    {
+        //调用方法:若公开的类是AAA,公开的AAA里的方法是bbb([参数]);
+    	bb.newData(function(data){
+        	alert(data);
+        });
+        bb.findList(function(data){
+        	alert(data);
+        });//回调函数callBack()
+    }
+    doMethod();
+    
+</script>
+</head>
+<body>
+
+</body>
+</html>
